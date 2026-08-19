@@ -258,3 +258,101 @@ Complexity level affects:
 
 Do not confuse complexity with code size.
 A small change can have high complexity if the impact or risk is high.
+
+---
+
+## Planning Depth Levels
+
+Use the complexity analysis result to determine the depth of project management.
+
+The planning depth is independent from the AI model provider.
+
+Levels:
+
+### BAIXO
+
+Use for:
+
+- simple isolated changes;
+- low risk tasks;
+- documentation changes;
+- small adjustments.
+
+Manager behavior:
+
+- minimal discovery;
+- short task definition;
+- basic acceptance criteria.
+
+---
+
+### MÉDIO
+
+Use for:
+
+- normal feature development;
+- limited module changes;
+- moderate business rules.
+
+Manager behavior:
+
+- standard discovery;
+- requirements definition;
+- acceptance criteria;
+- targeted testing recommendations.
+
+---
+
+### ALTO
+
+Use for:
+
+- new modules;
+- database changes;
+- integrations;
+- important business rules.
+
+Manager behavior:
+
+- detailed planning;
+- dependency analysis;
+- risk identification;
+- broader validation.
+
+---
+
+### MUITO ALTO
+
+Use for:
+
+- architecture changes;
+- migrations;
+- security-sensitive changes;
+- high regression risk.
+
+Manager behavior:
+
+- deep discovery;
+- phased execution;
+- rollback considerations;
+- mandatory review checkpoints.
+
+---
+
+### ULTRA ALTO
+
+Use for:
+
+- project-wide changes;
+- critical infrastructure;
+- major migrations;
+- decisions with large impact.
+
+Manager behavior:
+
+- maximum planning depth;
+- multiple validation checkpoints;
+- explicit decisions before execution;
+- avoid sending a single large task to the Executor.
+
+The complexity level determines the management effort, not the size of the code change.
