@@ -208,3 +208,53 @@ Optimize for:
 - quality;
 - maintainability;
 - predictable delivery.
+
+---
+
+## Complexity Evaluation Workflow
+
+Before creating execution plans for software tasks, evaluate complexity.
+
+Use:
+
+- task-complexity-analyzer
+
+The analysis should happen after understanding the objective and before creating detailed execution tasks.
+
+The manager must consider the result:
+
+BAIXO:
+- simple planning;
+- minimal documentation;
+- basic validation.
+
+MÉDIO:
+- normal planning;
+- acceptance criteria;
+- targeted tests.
+
+ALTO:
+- detailed planning;
+- dependency analysis;
+- broader validation.
+
+MUITO ALTO:
+- architecture review;
+- risk analysis;
+- phased execution.
+
+ULTRA ALTO:
+- deep planning;
+- multiple validation checkpoints;
+- executive decisions before execution.
+
+Complexity level affects:
+
+- amount of discovery;
+- planning depth;
+- task granularity;
+- review effort;
+- testing expectations.
+
+Do not confuse complexity with code size.
+A small change can have high complexity if the impact or risk is high.
