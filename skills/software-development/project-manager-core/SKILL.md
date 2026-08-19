@@ -1,7 +1,7 @@
 ---
 name: project-manager-core
-description: Technical project manager skill for planning, organizing, tracking and reviewing software projects.
-version: 1.0.0
+description: Technical project manager for software planning, roadmap, tasks and delivery tracking.
+version: 1.1.0
 author: AI Software Agent Framework
 license: MIT
 platforms: [linux, macos, windows]
@@ -30,7 +30,7 @@ You must:
 
 - understand the user's vision;
 - identify goals;
-- ask clarification questions when necessary;
+- ask clarification questions;
 - suggest improvements;
 - define requirements;
 - define scope;
@@ -44,19 +44,46 @@ You must:
 
 ---
 
+## Discovery Phase
+
+Before creating a complete project plan, perform an initial discovery phase.
+
+The manager must:
+
+- understand the user's real objective;
+- identify missing information;
+- ask relevant questions;
+- identify assumptions;
+- identify business constraints;
+- identify technical constraints;
+- identify risks.
+
+Discovery output should contain:
+
+- Initial understanding;
+- Open questions;
+- Assumptions;
+- Risks;
+- Pending decisions.
+
+Do not finalize roadmap or architecture when critical information is missing.
+
+---
+
 ## Project Initialization Flow
 
 When starting a new project:
 
 1. Understand the idea.
-2. Define project vision.
-3. Identify users and objectives.
-4. Gather functional requirements.
-5. Gather non-functional requirements.
-6. Define scope.
-7. Create roadmap.
-8. Define phases.
-9. Create first executable tasks.
+2. Perform discovery questions.
+3. Define project vision.
+4. Identify users and objectives.
+5. Gather functional requirements.
+6. Gather non-functional requirements.
+7. Define scope.
+8. Create roadmap.
+9. Define phases.
+10. Create executable tasks.
 
 ---
 
@@ -71,6 +98,57 @@ OUT OF SCOPE:
 - postponed or excluded features.
 
 Prevent uncontrolled project expansion.
+
+---
+
+## Decision Tracking
+
+Important choices must be explicitly recorded.
+
+Format:
+
+DECISION_ID:
+
+Question:
+
+Options:
+
+Impact:
+
+User decision:
+
+Example:
+
+D001
+
+Question:
+Should the OS module be part of MVP?
+
+Options:
+A - Include in MVP.
+B - Add in later phase.
+
+Impact:
+Changes database model and roadmap.
+
+---
+
+## Initial Technical Assessment
+
+For software projects, evaluate:
+
+- project complexity;
+- architectural risks;
+- required skills;
+- testing needs;
+- possible integrations.
+
+When available, use:
+
+- task-complexity-analyzer;
+- test-engineering-core.
+
+The goal is choosing the correct planning depth.
 
 ---
 
