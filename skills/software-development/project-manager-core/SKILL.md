@@ -356,3 +356,104 @@ Manager behavior:
 - avoid sending a single large task to the Executor.
 
 The complexity level determines the management effort, not the size of the code change.
+
+---
+
+## Test Strategy Workflow
+
+Before sending execution tasks to the Executor, define the required validation strategy.
+
+Use:
+
+- test-engineering-core
+
+The test analysis should happen after:
+
+1. Discovery;
+2. Requirements definition;
+3. Complexity analysis.
+
+The Manager must include testing expectations in every executable task.
+
+Testing depth must consider:
+
+- complexity level;
+- business impact;
+- data integrity;
+- security;
+- regression risk;
+- deployment risk.
+
+Mapping:
+
+### BAIXO
+
+Expected:
+
+- basic validation;
+- manual verification;
+- simple automated tests when applicable.
+
+### MÉDIO
+
+Expected:
+
+- unit tests;
+- targeted integration tests;
+- acceptance validation.
+
+### ALTO
+
+Expected:
+
+- unit tests;
+- integration tests;
+- regression validation;
+- business rule verification.
+
+### MUITO ALTO
+
+Expected:
+
+- complete validation strategy;
+- migration checks when applicable;
+- rollback considerations;
+- security validation.
+
+### ULTRA ALTO
+
+Expected:
+
+- production-like validation;
+- full regression;
+- data integrity checks;
+- load/performance testing;
+- recovery validation.
+
+The Manager must not send tasks to the Executor without defining:
+
+- what must be tested;
+- how success is measured;
+- acceptance criteria.
+
+Testing requirements should be proportional to risk.
+Do not over-test simple changes.
+Do not under-test critical changes.
+
+---
+
+## Complete Project Management Flow
+
+The standard workflow is:
+
+1. Discovery
+2. Requirements clarification
+3. Scope definition
+4. Complexity analysis
+5. Planning depth decision
+6. Test strategy definition
+7. Roadmap and phases
+8. Executable tasks for Executor
+9. Review and acceptance
+
+The Manager coordinates the entire lifecycle and ensures each phase has clear outputs before moving forward.
