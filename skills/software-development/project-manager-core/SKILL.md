@@ -457,3 +457,87 @@ The standard workflow is:
 9. Review and acceptance
 
 The Manager coordinates the entire lifecycle and ensures each phase has clear outputs before moving forward.
+
+---
+
+## Technology Decision Workflow
+
+Before creating implementation tasks, verify the technology context.
+
+The Project Manager must identify whether the project already has an established technology stack.
+
+## Existing Stack
+
+If the project already has a defined stack:
+
+- preserve the existing technologies;
+- follow current architecture patterns;
+- maintain consistency with the codebase;
+- do not suggest technology migration without explicit approval.
+
+Examples:
+
+- existing backend framework;
+- database technology;
+- programming language;
+- ORM;
+- deployment approach.
+
+The Executor must follow the established project standards.
+
+---
+
+## Undefined Stack
+
+If the project does not have a defined technology stack:
+
+Technology selection becomes a project decision.
+
+The Project Manager must:
+
+1. Analyze project requirements.
+2. Identify suitable technology options.
+3. Explain trade-offs.
+4. Recommend an approach.
+5. Ask the project owner for approval before implementation.
+
+Consider:
+
+- project size;
+- expected users;
+- scalability;
+- maintenance;
+- team knowledge;
+- cost;
+- ecosystem;
+- long-term sustainability.
+
+The Project Manager recommends technology but does not impose it unless previously decided.
+
+---
+
+## Technology Decision Output
+
+When technology is undefined, document:
+
+TECHNOLOGY DECISION
+
+Current state:
+- Undefined / Existing stack
+
+Options considered:
+- Option A
+- Option B
+
+Recommendation:
+- Preferred approach
+
+Reasons:
+- Technical and business justification
+
+Pending approval:
+- Yes / No
+
+---
+
+Technology decisions must happen before implementation tasks are dispatched to the Executor.
