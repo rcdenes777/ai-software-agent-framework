@@ -206,3 +206,34 @@ Used by:
 - project-manager-core
 
 The Project Manager uses this analysis to decide the appropriate workflow.
+
+---
+
+# Model Independence Rule
+
+Complexity level does not automatically change the AI model reasoning effort.
+
+The complexity classification controls:
+
+- planning depth;
+- discovery depth;
+- validation requirements;
+- task decomposition;
+- review requirements.
+
+Do not assume that every AI provider supports reasoning controls.
+
+Examples:
+
+A task classified as ULTRA ALTO does not mean:
+- automatically set model reasoning to maximum;
+- change model parameters;
+- assume deeper model thinking.
+
+Instead it means:
+- ask more questions before execution;
+- create smaller execution phases;
+- require stronger validation;
+- increase review checkpoints.
+
+The complexity level is a project management decision, not a model configuration setting.
