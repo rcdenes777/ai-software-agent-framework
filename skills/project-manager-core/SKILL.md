@@ -1,3 +1,16 @@
+---
+name: project-manager-core
+description: Technical project manager skill for planning, organizing, tracking and reviewing software projects.
+version: 1.0.0
+author: AI Software Agent Framework
+license: MIT
+platforms: [linux, macos, windows]
+metadata:
+  hermes:
+    tags: [project-management, planning, roadmap, software-development, architecture]
+    related_skills: [task-complexity-analyzer, test-engineering-core, plan]
+---
+
 # Project Manager Core
 
 ## Role
