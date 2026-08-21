@@ -1,197 +1,55 @@
 ---
 name: executor-handoff-core
-description: Convert project manager decisions into structured executable tasks for software agents.
-version: 1.0.0
-author: AI Software Agent Framework
+description: Turn an approved software objective into a bounded, executable assignment with explicit permissions, tests, evidence, return format, and escalation conditions. Use immediately before delegating implementation, audit, or verification work.
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [handoff, executor, task-definition, software-development]
-    related_skills: [project-manager-core, task-complexity-analyzer, test-engineering-core]
 ---
 
 # Executor Handoff Core
 
-## Role
+Create an assignment that an Executor can complete without inheriting hidden conversation context or inventing product decisions.
 
-You are a technical handoff specialist.
+## Required assignment
 
-Your responsibility is to transform project management outputs into clear, executable tasks for an implementation agent.
+Include only fields relevant to the task, but never omit a material boundary:
 
-You do not decide project scope.
+```text
+OBJECTIVE
+NECESSARY CONTEXT
+WORKING DIRECTORY
+IN SCOPE / OUT OF SCOPE
+READ BOUNDARY
+WRITE AUTHORITY: NONE | RESTRICTED | BROAD_EXPLICIT
+ALLOWED / PROHIBITED OPERATIONS
+RISK: R1 | R2 | R3, with reason
+ACCEPTANCE CRITERIA
+VALIDATION AND TEST LIMITS
+RETURN FORMAT
+STOP / ESCALATION CONDITIONS
+```
 
-You do not replace the Project Manager.
+Avoid a vague “free” write category. Broad access must be explicit. For read-only work, define how before/after integrity will be checked without assuming a clean worktree.
 
-You prepare the communication contract between:
+Give enough project context to understand the task, not the entire history. State which current files or documents are authoritative. Preserve unrelated user changes and sensitive material.
 
-Project Manager
-        |
-        v
-Executor Agent
+## Executor contract
 
----
+The Executor must stay within scope, inspect current sources, make the smallest sufficient change, run proportionate validation and never silently decide product, architecture or permission expansion.
 
-# Handoff Principles
+After 2–3 technically similar failed attempts without new understanding, stop varying the same solution. List facts and tested hypotheses, run the smallest useful experiment and return a block if uncertainty remains.
 
-A good handoff must:
+## Return contract
 
-- remove ambiguity;
-- provide enough context;
-- define boundaries;
-- specify validation;
-- prevent unnecessary changes.
+Ask for a compact, verdict-first response:
 
-The Executor should understand:
+1. verdict/status;
+2. critical findings;
+3. changes and paths;
+4. evidence (`file:line`, command/result, diff or equivalent);
+5. tests run, results and tests not run;
+6. risks and ambiguities;
+7. remaining work;
+8. confidence and escalation reason when uncertainty matters.
 
-- why the task exists;
-- what must be changed;
-- what must not be changed;
-- how success will be measured.
+Use markers only when they improve clarity: `[FACT]`, `[HYPOTHESIS]`, `[RISK]`, `[PENDING DECISION]`, `[RECOMMENDATION]`, `[BLOCKED]`.
 
----
-
-# Required Handoff Format
-
-Generate tasks using this structure:
-
-# TASK
-
-Short task name.
-
----
-
-# CONTEXT
-
-Explain:
-
-- project background;
-- current state;
-- why this task exists.
-
----
-
-# OBJECTIVE
-
-Describe the expected result.
-
----
-
-# SCOPE
-
-## Included
-
-List exactly what should be implemented.
-
-## Not Included
-
-List what must not be changed.
-
----
-
-# FILES AND AREAS
-
-Identify:
-
-- files;
-- modules;
-- components;
-- database areas;
-- APIs.
-
-If unknown:
-
-state that investigation is required.
-
----
-
-# IMPLEMENTATION GUIDANCE
-
-Provide:
-
-- technical considerations;
-- constraints;
-- dependencies;
-- important rules.
-
-Do not prescribe unnecessary implementation details.
-
----
-
-# TEST REQUIREMENTS
-
-Include:
-
-- required tests;
-- validation steps;
-- acceptance checks.
-
-Use the test strategy defined by the Project Manager.
-
----
-
-# ACCEPTANCE CRITERIA
-
-Define objective conditions for completion.
-
-Examples:
-
-- endpoint returns expected response;
-- migration completes successfully;
-- tests pass;
-- behavior remains unchanged outside scope.
-
----
-
-# RETURN FORMAT
-
-The Executor must return:
-
-STATUS:
-- CONCLUÍDO
-- BLOQUEADO
-- PARCIAL
-
-CHANGES:
-- files modified;
-- important decisions.
-
-TESTS:
-- commands executed;
-- results.
-
-RISKS:
-- remaining concerns.
-
----
-
-# Executor Rules
-
-The Executor must:
-
-- follow the defined scope;
-- avoid unrelated refactoring;
-- report blockers;
-- run required tests;
-- not expand requirements without approval.
-
-The Executor must not:
-
-- redefine business requirements;
-- change architecture without approval;
-- skip validation.
-
----
-
-# Collaboration Flow
-
-Complete lifecycle:
-
-1. Project Manager creates project understanding.
-2. Complexity is analyzed.
-3. Test strategy is defined.
-4. Handoff converts decisions into execution tasks.
-5. Executor implements.
-6. Manager reviews result.
-
-The handoff is the contract between planning and execution.
+Do not impose a rigid response length or schema when narrative evidence is more useful. Do not require model-specific names such as Pro/Flash in a reusable handoff.

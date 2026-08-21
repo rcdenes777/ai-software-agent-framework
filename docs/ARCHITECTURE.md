@@ -1,123 +1,63 @@
-# AI Software Agent Framework — Architecture
+# Arquitetura canônica Gerente–Executor
 
-## Visão Geral
+## Núcleo mínimo
 
-Este repositório define uma arquitetura reutilizável para agentes de inteligência artificial voltados ao desenvolvimento de software.
+```text
+HUMANO
+  │ objetivos, prioridades e decisões reservadas
+  ▼
+GERENTE
+  │ tarefa autocontida, autorização e critérios de aceite
+  ▼
+EXECUTOR
+  │ alterações, testes, evidências, riscos e bloqueios
+  ▼
+GERENTE
+  │ verificação independente e decisão
+  ├─ aprovar
+  ├─ pedir correção
+  ├─ escalar execução/revisão
+  └─ solicitar decisão humana
+```
 
-O objetivo é separar responsabilidades entre agentes especializados.
+Funções especializadas — testes, segurança, banco, migração ou revisão independente — são skills, checklists, ferramentas ou instâncias temporárias. Não precisam ser agentes permanentes.
 
----
+## Responsabilidades
 
-# Arquitetura de Agentes
+### Humano
 
-Fluxo principal:
+Define produto, prioridades e decisões de alto impacto. Autoriza operações destrutivas, irreversíveis, externas ou fora do escopo concedido.
 
-Usuário
+### Gerente
 
-↓
+Mantém a visão global; confirma o estado atual; esclarece requisitos; controla escopo; classifica risco; decompõe; escolhe contexto e executor; define testes; delega; revisa evidências; procura omissões; decide correção, escalonamento ou conclusão.
 
-Project Manager
+### Executor
 
-↓
+Executa somente o recorte autorizado; preserva trabalho alheio; testa; corrige; distingue fato de hipótese; reporta alterações, comandos, resultados, riscos, incertezas e o que não foi validado. Não redefine arquitetura, produto, escopo ou permissões.
 
-Executor
+## Roteamento
 
-↓
+Começar pelo executor de menor custo já demonstrado como capaz para a classe de tarefa. Não usar “complexo = modelo caro” como regra. Escalar quando houver evidência concreta, como baixa confiança após teste mínimo, falhas repetidas, alto custo de reversão, risco crítico, contradição ou necessidade de contexto/capacidade não disponível.
 
-Test Engineering
+Trabalho efêmero e delimitado pode usar delegação nativa. Trabalho que precisa sobreviver à sessão ou participar de um grafo usa coordenação durável, como Kanban. O mecanismo é escolha operacional; os papéis permanecem os mesmos.
 
-↓
+## Distribuição das regras
 
-Revisão e atualização do projeto
+- SOUL/profile: identidade e política de roteamento específica daquela equipe/modelo.
+- Skills: procedimentos reutilizáveis e acionáveis.
+- Governança: autoridade, segurança, risco e invariantes permanentes.
+- Templates: contratos e registros preenchidos por projeto/tarefa.
+- Histórico: explicação de decisões passadas, nunca verdade operacional atual.
 
----
+## Fontes de verdade
 
-# Papéis
+1. Código, Git, bancos, testes e configuração efetiva atuais.
+2. Documentação canônica atual do projeto.
+3. Tarefa, handoff, status e decisões humanas atuais.
+4. Governança e skills aplicáveis.
+5. Memória curada.
+6. Histórico de sessões e documentos antigos.
+7. Inferência.
 
-## Project Manager
-
-Responsável por:
-
-- entender a visão do usuário;
-- planejar o projeto;
-- definir requisitos;
-- controlar escopo;
-- criar roadmap;
-- dividir fases;
-- criar tarefas;
-- revisar entregas.
-
-Não é responsável por implementar código diretamente.
-
----
-
-## Executor
-
-Responsável por:
-
-- executar tarefas técnicas;
-- modificar código;
-- criar testes;
-- validar implementação;
-- reportar resultados.
-
-Recebe tarefas previamente estruturadas.
-
----
-
-## Test Engineering
-
-Responsável por:
-
-- avaliar estratégia de testes;
-- revisar cobertura;
-- analisar riscos;
-- sugerir melhorias de validação.
-
----
-
-# Skills
-
-## project-manager-core
-
-Define o comportamento do Gerente Técnico.
-
-## task-complexity-analyzer
-
-Classifica a complexidade das tarefas.
-
-Níveis:
-
-- Lua
-- Terra
-- Sol
-
-## test-engineering-core
-
-Define práticas de validação e qualidade.
-
----
-
-# Princípios
-
-## Separação de responsabilidades
-
-Cada agente possui uma função clara.
-
-## Rastreabilidade
-
-Decisões, fases e alterações devem ser registradas.
-
-## Controle de escopo
-
-O projeto deve evoluir de forma planejada.
-
-## Qualidade
-
-Nenhuma entrega é considerada concluída sem validação adequada.
-
----
-
-# Objetivo Final
-
-Criar uma arquitetura de agentes capaz de conduzir projetos de software desde a ideia inicial até a entrega, mantendo planejamento, execução e qualidade organizados.
+Quando uma fonte inferior puder mudar uma ação sobre código, Git, banco ou infraestrutura, confirme em fonte superior antes de agir.

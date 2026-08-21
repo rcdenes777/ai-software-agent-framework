@@ -1,87 +1,31 @@
-# Hermes Skill Management Guide
+# Gestão de skills no Hermes
 
-## Objetivo
+## Fonte canônica
 
-Guia para criar, versionar e disponibilizar skills no Hermes Agent.
+As skills deste framework vivem em:
 
-## Estrutura
-
-Uma skill segue o formato:
-
-    categoria/
-    └── nome-da-skill/
-        └── SKILL.md
-
-Exemplo:
-
-    software-development/
-    └── project-manager-core/
-        └── SKILL.md
-
-## Fonte Git
-
-Manter as skills no repositório:
-
-    ~/Documentos/ai-software-agent-framework
-
-Exemplo:
-
-    skills/software-development/project-manager-core/SKILL.md
-
-O Git é a fonte oficial.
-
-## Local Hermes
-
-O Hermes utiliza:
-
-    ~/.hermes/skills/
-
-Exemplo:
-
-    ~/.hermes/skills/software-development/project-manager-core
-
-## Integração
-
-Criar link simbólico:
-
-    ln -s ~/Documentos/ai-software-agent-framework/skills/software-development/project-manager-core ~/.hermes/skills/software-development/project-manager-core
-
-## SKILL.md
-
-Modelo:
-
-``` yaml
----
-name: nome-da-skill
-description: Descrição curta da skill.
-version: 1.0.0
-author: AI Software Agent Framework
-license: MIT
----
+```text
+skills/software-development/<nome>/SKILL.md
 ```
+
+Profiles do Hermes devem usar links simbólicos para essas pastas. Não copie versões divergentes para cada profile.
+
+## Política
+
+- Skill disponível não significa skill carregada.
+- Adote apenas skills que resolvam problema real e tenham escopo discriminante.
+- Regras de identidade/modelo ficam no SOUL/profile, não numa skill genérica.
+- Procedimentos condicionais extensos ficam em `references/` e são lidos apenas quando aplicáveis.
+- Atualizações devem mostrar o diff, preservar mudanças locais, validar e ser aprovadas antes de publicação.
 
 ## Validação
 
-Comando:
+Para cada skill alterada:
 
-    hermes skills list
+1. validar frontmatter e nome;
+2. confirmar que referências ligadas existem;
+3. procurar duplicação ou regra específica de projeto/modelo;
+4. testar o comportamento ou invariantes relevantes;
+5. revisar o diff e o estado Git antes de commit/push.
 
-Esperado:
-
-    nome-da-skill | categoria | local | local | enabled
-
-## Fluxo completo
-
-    Criar Skill no Git
-    ↓
-    Criar SKILL.md
-    ↓
-    Adicionar metadata Hermes
-    ↓
-    Criar link simbólico
-    ↓
-    hermes skills list
-    ↓
-    Testar
-    ↓
-    Commit
+No Hermes, confirme os links e a descoberta pelo comando de listagem de skills da versão instalada.
