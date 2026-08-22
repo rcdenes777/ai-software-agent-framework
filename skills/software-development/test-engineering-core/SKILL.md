@@ -22,6 +22,8 @@ Scale to risk:
 - R2: success/failure paths, integration boundaries and broader regression.
 - R3: critical invariants, realistic environment, rollback/recovery where applicable and independent review for the risk domain.
 
+For a correction involving authorization, role-based confidentiality, tenant isolation, idempotency or transactional integrity, do not close the item from unit tests or static/type checks alone. Re-run a targeted regression end-to-end against the real database and effective authentication/serialization path after the correction. Verify, as applicable: an authorized role, an unauthorized role, omission of confidential response fields, cross-tenant isolation, database state before/after and replay of the same idempotency key. If a realistic E2E environment is unavailable, state the unverified risk explicitly and do not report the invariant as proven.
+
 Do not over-test simple changes. Do not under-test a small patch with critical impact. A green test is insufficient if it does not prove the requirement or uses the wrong assumptions.
 
 ## Review existing evidence
