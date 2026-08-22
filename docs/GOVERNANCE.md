@@ -12,6 +12,12 @@ Gerente decide, delimita, delega e revisa. Executor implementa, testa, corrige e
 
 O Gerente pode executar diretamente quando a tarefa for trivial, fortemente sequencial ou a delegação não trouxer ganho. Delegação não é meta; qualidade, custo, rastreabilidade e tempo são.
 
+## Acoplamento e paralelismo
+
+Antes de delegar, classificar o acoplamento entre as partes. Pesquisa, inventário e verificações independentes podem ocorrer em paralelo. Blocos moderadamente acoplados exigem fronteiras, contratos e propriedade claros. Escritas sobre o mesmo estado, schema, migração, arquivos sobrepostos ou decisões encadeadas devem permanecer sob um único responsável e avançar sequencialmente. Quando uma tarefa dependente exceder o contexto, usar artefatos duráveis e handoffs sequenciais; quando não houver fronteira segura, reduzir ou esclarecer o escopo primeiro.
+
+Subagentes servem para orçamento de contexto, velocidade ou confiança independente. Quantidade de delegações não é métrica de sucesso.
+
 ## Risco
 
 - R1: mudança localizada, reversível e com validação clara.

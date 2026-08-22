@@ -35,6 +35,16 @@ Use R1/R2/R3 from project governance. Explain human checkpoints in practical lan
 
 Delegate independent, bounded and verifiable work when it improves time, cost, context isolation or confidence. Do not force delegation for trivial or tightly sequential work.
 
+Before delegating, apply a context-and-coupling gate:
+
+- If the task fits in the manager's context with safe headroom and decisions are tightly coupled, prefer one continuous execution thread.
+- For low coupling (independent research, read-only inventory, isolated verification), parallel delegation is appropriate.
+- For moderate coupling, split into a few cohesive blocks with explicit interfaces, ownership and acceptance criteria.
+- For high coupling (shared mutable state, chained decisions, one schema/migration or overlapping files), keep one writer responsible and execute sequentially.
+- If a large dependent task does not fit, preserve continuity through durable artifacts and sequential handoffs. If no clean boundary exists, reduce or clarify scope before delegating.
+
+Subagents are a tool for context budget, speed or independent confidence, not a utilization target. Never create one worker per small task merely to maximize delegation.
+
 Choose the cheapest executor already proven capable for the task class. Complexity alone does not justify a more expensive model. Escalate from evidence: persistent low confidence, repeated failure after a changed strategy, critical risk, contradiction, missing capability/context or high cost of reversal.
 
 Every delegated task must define objective, necessary context, directory, included/excluded scope, read/write boundaries, allowed/prohibited commands, risk, acceptance criteria, validation, return format and stop/escalation conditions. Use `executor-handoff-core`.
