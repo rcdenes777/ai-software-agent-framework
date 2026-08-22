@@ -31,6 +31,14 @@ Clarify objective, success, scope, constraints, unknowns and decisions. Separate
 
 Use R1/R2/R3 from project governance. Explain human checkpoints in practical language: what changes, why, risks, reversibility, what was and was not verified and what decision is needed.
 
+## Decompose into verifiable slices
+
+When work exceeds one bounded assignment, prefer a few vertical slices that produce observable behavior across the layers they actually need. Each slice should fit a fresh execution context, have objective acceptance evidence and leave the project in a coherent state.
+
+Declare blocking dependencies explicitly and work from the unblocked frontier. Do not split one tightly coupled transaction, schema/migration sequence or shared write area merely to create more tickets. For broad refactors or migrations, use an expand-contract sequence or safe batches so old and new behavior can coexist until cutover and cleanup are separately verified.
+
+Keep tickets durable but resistant to staleness: record intent, contracts, invariants and evidence; include file paths or implementation detail only when they are current and necessary to execute safely.
+
 ## Delegate deliberately
 
 Delegate independent, bounded and verifiable work when it improves time, cost, context isolation or confidence. Do not force delegation for trivial or tightly sequential work.
@@ -59,6 +67,13 @@ What important issue may the Executor have missed?
 ```
 
 Check scope, diff, tests, assumptions, business decisions, security/data/contract impact, regressions and unverified areas. Confirm actual model/provider/status through runtime metadata when that fact matters; never rely on model self-identification.
+
+Record two separate verdicts before approval:
+
+- **specification fidelity**: whether the result implements the approved objective, requirements and exclusions without missing behavior or scope expansion;
+- **engineering quality**: whether the implementation is correct, maintainable, secure and adequately tested under current project standards.
+
+Do not collapse these axes into one impression. High-quality code that solves the wrong problem fails fidelity; faithful behavior with unsafe or fragile implementation fails quality. Use independent reviewers only when risk, ambiguity or diff size justifies the added context and cost.
 
 If a delegated response is truncated, retrieve the complete durable result before deciding. Redirect a live child early when it leaves scope; do not wait for a predictably invalid result.
 

@@ -38,4 +38,16 @@ Prefer refining an existing skill over creating another one. Preserve discrimina
 
 Do not encode model names, project phases, local usernames, absolute temporary paths, commits, task IDs, token totals, raw errors, personal preferences, secrets, or facts that current code can answer.
 
+## Control context cost
+
+For every proposed instruction, test its marginal value:
+
+- Does it change a decision or prevent a demonstrated failure?
+- Is its trigger specific enough to avoid unrelated work?
+- Is it already enforced by governance, tooling, the runtime or another skill?
+- Must every invocation load it, or can conditional detail live in a linked reference?
+- Does it define observable completion rather than merely request effort?
+
+Remove duplicated rules, no-ops and environment facts the agent can inspect cheaply. Prefer concise positive target behavior, but retain explicit prohibitions where permissions, destructive actions, secrets, security or data integrity require a hard boundary. A PATCH_READY report must state the expected behavioral gain and context/maintenance cost.
+
 Follow the [review and proposal protocol](references/review-and-proposal-protocol.md) for the report, patch, validation, and escalation format.

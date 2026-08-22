@@ -26,6 +26,8 @@ For a correction involving authorization, role-based confidentiality, tenant iso
 
 Do not over-test simple changes. Do not under-test a small patch with critical impact. A green test is insufficient if it does not prove the requirement or uses the wrong assumptions.
 
+Prefer behavioral tests through stable public seams. Derive expected results from an independent oracle such as an approved rule, explicit example, prior compatible behavior or separately calculated invariant; do not compute the expectation with the same implementation logic under test. Reject tautological tests that merely restate mocks, fixtures or the implementation. Mock external or expensive boundaries when necessary, but use realistic owned components and the real database when the risk depends on their behavior.
+
 ## Review existing evidence
 
 Confirm commands actually ran, results match claims, failures were not hidden, generated artifacts did not pollute the worktree and unexecuted tests are explicit. Cross-check planned behavior, implementation, tests and evidence.
