@@ -34,5 +34,6 @@ Gerente e Executor são papéis, não modelos fixos. O modelo mais econômico co
 - Complexidade orienta decomposição; risco orienta validação.
 - Workarounds exigem prova de que a alternativa nativa atual não atende.
 - Toda nova regra ou artefato deve resolver um problema real observado.
+- Evolução de skills ocorre em lotes de evidência, com revisão Sol `xhigh`, staging sanitizado e publicação explicitamente aprovada.
 
 Status: em validação contínua em projetos reais.
